@@ -27,9 +27,9 @@ Future<List> findMatch() async {
       ));
     }
 
-    times.forEach((element) {
-      print(element.shortName);
-    });
+    // times.forEach((element) {
+    //   print(element.shortName);
+    // });
 
     // print(times);
     return times;
@@ -41,5 +41,4 @@ Future<List> findMatch() async {
 
 Future main() async {
   final times = await findMatch();
-  print(times);
 }
