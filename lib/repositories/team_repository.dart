@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:canario_fut/models/RatingTable.dart';
 import 'package:dio/dio.dart';
@@ -12,7 +13,7 @@ class TeamRepository {
 
   TeamRepository({Dio? client}) : dio = client ?? Dio();
 
-  Future fetchTeams() async {
+  Future<List<RatingTable>> fetchTeams() async {
     final response = await dio!.get(
       url,
       options: Options(headers: <String, String>{
@@ -23,16 +24,12 @@ class TeamRepository {
     var mapStandings = response.data as Map;
     var listStandings = mapStandings["standings"] as List;
     mapStandings = listStandings[0];
-    final listTeams = mapStandings["table"];
+    final listTeams = mapStandings["table"] as List;
 
-    // return listTeams.forEach((team) {
-    //   print(team["team"].toString());
-    // });
-
-    return listTeams.forEach((team) => RatingTable.fromJson(team));
+    return listTeams.map((e) => RatingTable.fromJson(e)).toList();
   }
 }
 
-void main(List<String> args) {
-  TeamRepository().fetchTeams();
+Future<void> main(List<String> args) async {
+  var list = await TeamRepository().fetchTeams();
 }
