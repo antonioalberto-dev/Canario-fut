@@ -1,7 +1,8 @@
 import 'package:canario_fut/controllers/home_controller.dart';
 import 'package:canario_fut/models/RatingTable.dart';
-import 'package:canario_fut/repositories/team_repository.dart';
 import 'package:flutter/material.dart';
+
+import 'card_team.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -15,26 +16,12 @@ class _MainScreenState extends State<MainScreen> {
 
   _success() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10,15,10,20),
+      padding: const EdgeInsets.fromLTRB(10, 15, 10, 20),
       child: ListView.builder(
         itemCount: controller.allTeams.length,
         itemBuilder: (context, index) {
           RatingTable team = controller.allTeams[index];
-          return Card(
-            color: colorCard(team.position),
-            margin: const EdgeInsets.fromLTRB(10, 2.5, 10, 2.5),
-            elevation: 2,
-            child: ListTile(
-              leading: Text(team.position.toString(), style: const TextStyle(fontSize: 12),),
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(team.team!.shortName.toString(), style: const TextStyle(fontSize: 12),),
-                  Text(team.points.toString(), style: const TextStyle(fontSize: 12),),
-                ],
-              ),
-            ),
-          );
+          return CardTeam(team: team);
         },
       ),
     );
@@ -95,15 +82,5 @@ class _MainScreenState extends State<MainScreen> {
         },
       ),
     );
-  }
-}
-
-Color? colorCard(int? position) {
-  if (position! <= 4 ) {
-    return Colors.green[200];
-  }else if(position >= 17){
-    return Colors.red[200];
-  }else if(position <= 6){
-    return Colors.orangeAccent[200];
   }
 }
