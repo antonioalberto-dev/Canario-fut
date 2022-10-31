@@ -24,4 +24,16 @@ class TeamRepository {
 
     return listTeams.map((e) => RatingTable.fromJson(e)).toList();
   }
+
+  Future<int> matchDay() async {
+    final response = await dio!.get(
+      url,
+      options: Options(headers: <String, String>{
+        "X-Auth-Token": "9d30da71251042ecbda71532b9f3b031"
+      }),
+    );
+
+    var mapStandings = response.data as Map;
+    return mapStandings["season"]["currentMatchday"];
+  }
 }

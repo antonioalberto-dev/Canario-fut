@@ -1,14 +1,15 @@
 import 'package:canario_fut/screens/ranking.dart';
+import 'package:canario_fut/screens/scorers_screen.dart';
 import 'package:flutter/material.dart';
 
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<MyStatefulWidget> createState() => MyStatefulWidgetState();
+  State<MainScreen> createState() => MainScreenState();
 }
 
-class MyStatefulWidgetState extends State<MyStatefulWidget> {
+class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   static const TextStyle optionStyle =
@@ -20,10 +21,7 @@ class MyStatefulWidgetState extends State<MyStatefulWidget> {
       'Partidas',
       style: optionStyle,
     ),
-    Text(
-      'Artilharia',
-      style: optionStyle,
-    ),
+    ScorersScreen(),
   ];
 
   void _onItemTapped(int index) {

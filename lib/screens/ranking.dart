@@ -1,4 +1,5 @@
 import 'package:canario_fut/controllers/home_controller.dart';
+import 'package:canario_fut/controllers/state_enum.dart';
 import 'package:canario_fut/models/ratingTable.dart';
 import 'package:flutter/material.dart';
 
@@ -48,15 +49,15 @@ class _RankingState extends State<Ranking> {
     return Container();
   }
 
-  stateManagement(HomeState state) {
+  stateManagement(StateEnum state) {
     switch (state) {
-      case HomeState.start:
+      case StateEnum.start:
         return _start();
-      case HomeState.loading:
+      case StateEnum.loading:
         return _loading();
-      case HomeState.error:
+      case StateEnum.error:
         return _error();
-      case HomeState.success:
+      case StateEnum.success:
         return _success();
       default:
     }
