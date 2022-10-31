@@ -15,7 +15,7 @@ class HomeController {
   Future start() async {
     state.value = HomeState.loading;
     try {
-      allTeams =  await _repository?.fetchTeams() as List<RatingTable>;
+      allTeams = await _repository?.fetchTeams() as List<RatingTable>;
       state.value = HomeState.success;
     } catch (e) {
       state.value = HomeState.error;

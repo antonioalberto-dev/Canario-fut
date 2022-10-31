@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import 'card_team.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+class Ranking extends StatefulWidget {
+  const Ranking({Key? key}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<Ranking> createState() => _RankingState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _RankingState extends State<Ranking> {
   final controller = HomeController();
 
   _success() {
@@ -70,17 +70,11 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // backgroundColor: Colors.tealAccent,
-      appBar: AppBar(
-        title: const Text('Canario'),
-      ),
-      body: AnimatedBuilder(
-        animation: controller.state,
-        builder: (context, child) {
-          return stateManagement(controller.state.value);
-        },
-      ),
+    return AnimatedBuilder(
+      animation: controller.state,
+      builder: (context, child) {
+        return stateManagement(controller.state.value);
+      },
     );
   }
 }

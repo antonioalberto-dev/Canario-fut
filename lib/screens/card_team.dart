@@ -1,6 +1,5 @@
 import 'package:canario_fut/models/RatingTable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CardTeam extends StatelessWidget {
   final RatingTable team;
@@ -23,7 +22,7 @@ class CardTeam extends StatelessWidget {
           children: [
             Text(
               team.team!.tla.toString(),
-              style: const TextStyle(fontSize: 12),
+              style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
             ),
             Text(
               team.points.toString(),
