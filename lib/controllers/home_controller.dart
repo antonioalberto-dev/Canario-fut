@@ -1,7 +1,7 @@
 import 'package:canario_fut/repositories/team_repository.dart';
 import 'package:flutter/widgets.dart';
 
-import '../models/RatingTable.dart';
+import '../models/ratingTable.dart';
 
 class HomeController {
   List<RatingTable> allTeams = [];

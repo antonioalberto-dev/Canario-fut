@@ -3,11 +3,11 @@ import 'package:dio/dio.dart';
 
 // import 'package:http/http.dart' as http;
 
-class TeamRepository {
+class ArtilhariaController {
   Dio? dio;
   final url = "http://api.football-data.org//v4/competitions/BSA/standings";
 
-  TeamRepository({Dio? client}) : dio = client ?? Dio();
+  ArtilhariaController({Dio? client}) : dio = client ?? Dio();
 
   Future<List<RatingTable>> fetchTeams() async {
     final response = await dio!.get(

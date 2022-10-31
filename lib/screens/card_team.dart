@@ -1,4 +1,4 @@
-import 'package:canario_fut/models/RatingTable.dart';
+import 'package:canario_fut/models/ratingTable.dart';
 import 'package:flutter/material.dart';
 
 class CardTeam extends StatelessWidget {

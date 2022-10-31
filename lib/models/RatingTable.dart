@@ -1,4 +1,4 @@
-import 'Team.dart';
+import 'team.dart';
 
 class RatingTable {
   int? position;
