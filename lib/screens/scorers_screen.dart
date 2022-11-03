@@ -22,29 +22,40 @@ class _ScorersScreenState extends State<ScorersScreen> {
         itemBuilder: (context, index) {
           Scorer scorer = controller.scorers[index];
           return Card(
-            child: ListTile(
-              leading: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    scorer.goals.toString(),
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.black87,
+            clipBehavior: Clip.antiAlias,
+            elevation: 2,
+            child: Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                      colors: [Colors.white, colorScorerBG(index)])),
+              child: ListTile(
+                leading: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      scorer.goals.toString(),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.black87,
+                      ),
                     ),
+                    Text(
+                      "Gols".toUpperCase(),
+                      style: TextStyle(
+                          fontSize: 10,
+                          color: colorScorerText(index),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.3),
+                    ),
+                  ],
+                ),
+                title: Text(scorer.player!.name.toString()),
+                subtitle: Text(
+                  scorer.team!.name.toString(),
+                  style: const TextStyle(
+                    fontSize: 11,
+                    color: Colors.black45,
                   ),
-                  Text(
-                    "Gols".toUpperCase(),
-                    style: const TextStyle(fontSize: 8, color: Colors.amber, fontWeight: FontWeight.bold, letterSpacing: 1.3),
-                  ),
-                ],
-              ),
-              title: Text(scorer.player!.name.toString()),
-              subtitle: Text(
-                scorer.team!.name.toString(),
-                style: const TextStyle(
-                  fontSize: 10,
-                  color: Colors.black45,
                 ),
               ),
             ),
@@ -104,4 +115,26 @@ class _ScorersScreenState extends State<ScorersScreen> {
       },
     );
   }
+}
+
+Color colorScorerText(int position) {
+  if (position == 0) {
+    return Colors.amber;
+  } else if (position == 1) {
+    return Colors.grey;
+  } else if (position == 2) {
+    return Colors.brown;
+  }
+  return Colors.black87;
+}
+
+Color colorScorerBG(int position) {
+  if (position == 0) {
+    return Colors.amber;
+  } else if (position == 1) {
+    return Colors.grey;
+  } else if (position == 2) {
+    return Colors.brown;
+  }
+  return Colors.white;
 }

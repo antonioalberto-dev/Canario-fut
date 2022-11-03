@@ -33,10 +33,6 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Canario Fut'),
-        elevation: 0,
-      ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
@@ -44,7 +40,7 @@ class MainScreenState extends State<MainScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.table_chart_outlined),
-            label: 'Classificação',
+            label: 'Tabela',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.sports_sharp),
