@@ -40,7 +40,8 @@ class MainScreenState extends State<MainScreen> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.table_chart_outlined),
-            label: 'Tabela',
+            label: 'Classif.',
+            tooltip: "Classificação"
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.sports_sharp),

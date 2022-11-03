@@ -37,7 +37,7 @@ class _RankingState extends State<Ranking> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text(
-                    'Campeonato Brasileiro',
+                    'Classificação',
                     style: TextStyle(
                       fontSize: 16,
                       // letterSpacing: 1.0,
@@ -45,10 +45,9 @@ class _RankingState extends State<Ranking> {
                     ),
                   ),
                   Text(
-                    'Tabela de classificação',
+                    'Campeonato Brasileiro 2022 | Série A',
                     style: TextStyle(
-                      fontSize: 13,
-                      fontStyle: FontStyle.italic,
+                      fontSize: 10,
                       color: Colors.black87,
                     ),
                   ),

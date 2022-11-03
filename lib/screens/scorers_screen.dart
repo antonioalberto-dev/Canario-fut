@@ -17,50 +17,85 @@ class _ScorersScreenState extends State<ScorersScreen> {
   _success() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 15, 10, 20),
-      child: ListView.builder(
-        itemCount: controller.scorers.length,
-        itemBuilder: (context, index) {
-          Scorer scorer = controller.scorers[index];
-          return Card(
-            clipBehavior: Clip.antiAlias,
-            elevation: 2,
-            child: Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      colors: [Colors.white, colorScorerBG(index)])),
-              child: ListTile(
-                leading: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10, left: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
                     Text(
-                      scorer.goals.toString(),
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.black87,
+                      'ARTILHEIROS',
+                      style: TextStyle(
+                        fontSize: 16,
+                        // letterSpacing: 1.0,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      "Gols".toUpperCase(),
+                      'Campeonato Brasileiro 2022 | Série A',
                       style: TextStyle(
-                          fontSize: 10,
-                          color: colorScorerText(index),
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1.3),
+                        fontSize: 10,
+                        // fontStyle: FontStyle.italic,
+                        color: Colors.black87,
+                      ),
                     ),
                   ],
                 ),
-                title: Text(scorer.player!.name.toString()),
-                subtitle: Text(
-                  scorer.team!.name.toString(),
-                  style: const TextStyle(
-                    fontSize: 11,
-                    color: Colors.black45,
-                  ),
-                ),
               ),
+            ],
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .75,
+            child: ListView.builder(
+              itemCount: controller.scorers.length,
+              itemBuilder: (context, index) {
+                Scorer scorer = controller.scorers[index];
+                return Card(
+                  clipBehavior: Clip.antiAlias,
+                  elevation: 2,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [Colors.white, colorScorerBG(index)])),
+                    child: ListTile(
+                      leading: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            scorer.goals.toString(),
+                            style: const TextStyle(
+                              fontSize: 18,
+                              color: Colors.black87,
+                            ),
+                          ),
+                          Text(
+                            "Gols".toUpperCase(),
+                            style: TextStyle(
+                                fontSize: 10,
+                                color: colorScorerText(index),
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1.3),
+                          ),
+                        ],
+                      ),
+                      title: Text(scorer.player!.name.toString()),
+                      subtitle: Text(
+                        scorer.team!.name.toString(),
+                        style: const TextStyle(
+                          fontSize: 11,
+                          color: Colors.black45,
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
-          );
-        },
+          ),
+        ],
       ),
     );
   }
