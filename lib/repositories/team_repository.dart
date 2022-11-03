@@ -37,3 +37,8 @@ class TeamRepository {
     return mapStandings["season"]["currentMatchday"];
   }
 }
+
+Future<void> main(List<String> args) async {
+  int matchDay = await TeamRepository().matchDay();
+  print(matchDay);
+}

@@ -58,8 +58,10 @@ class _ScorersScreenState extends State<ScorersScreen> {
                   elevation: 2,
                   child: Container(
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [Colors.white, colorScorerBG(index)])),
+                      gradient: LinearGradient(
+                        colors: [Colors.white, colorScorerBG(index)],
+                      ),
+                    ),
                     child: ListTile(
                       leading: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

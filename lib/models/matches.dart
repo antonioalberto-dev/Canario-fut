@@ -1,4 +1,4 @@
-class Match {
+class Matches {
   Area? area;
   Competition? competition;
   Season? season;
@@ -13,7 +13,7 @@ class Match {
   Score? score;
   Odds? odds;
 
-  Match(
+  Matches(
       {this.area,
       this.competition,
       this.season,
@@ -28,7 +28,7 @@ class Match {
       this.score,
       this.odds});
 
-  Match.fromJson(Map<String, dynamic> json) {
+  Matches.fromJson(Map<String, dynamic> json) {
     area = json['area'] != null ? Area.fromJson(json['area']) : null;
     competition = json['competition'] != null
         ? Competition.fromJson(json['competition'])

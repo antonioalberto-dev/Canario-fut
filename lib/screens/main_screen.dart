@@ -1,3 +1,4 @@
+import 'package:canario_fut/screens/matches_screen.dart';
 import 'package:canario_fut/screens/ranking.dart';
 import 'package:canario_fut/screens/scorers_screen.dart';
 import 'package:flutter/material.dart';
@@ -17,10 +18,7 @@ class MainScreenState extends State<MainScreen> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     Ranking(),
-    Text(
-      'Partidas',
-      style: optionStyle,
-    ),
+    MatchesScreen(),
     ScorersScreen(),
   ];
 
