@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:canario_fut/controllers/matches_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -48,7 +50,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
             ],
           ),
           SizedBox(
-            height: MediaQuery.of(context).size.height * .70,
+            height: MediaQuery.of(context).size.height * .75,
             child: GridView.builder(
               padding: const EdgeInsets.only(left: 10, right: 10),
               itemCount: controller.matches.length,
@@ -56,22 +58,56 @@ class _MatchesScreenState extends State<MatchesScreen> {
                 Matches match = controller.matches[index];
                 return Card(
                   elevation: 2,
-                  child: Row(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text(match.homeTeam!.tla.toString()),
-                          Text(match.score!.fullTime!.home.toString())
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(match.homeTeam!.tla.toString()),
+                              Text(match.score!.fullTime!.home.toString())
+                            ],
+                          ),
+                          const Divider(),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(match.awayTeam!.tla.toString()),
+                              Text(match.score!.fullTime!.away.toString())
+                            ],
+                          ),
                         ],
                       ),
-                      const Divider(),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text(match.awayTeam!.tla.toString()),
-                          Text(match.score!.fullTime!.away.toString())
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(3.5, 1, 3.5, 1),
+                            decoration: const BoxDecoration(
+                                color: Colors.teal,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: Text(
+                              getDate(match.utcDate.toString()),
+                              style: const TextStyle(
+                                  fontSize: 10, color: Colors.white),
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.fromLTRB(5, 1, 5, 1),
+                            decoration: const BoxDecoration(
+                                color: Color.fromARGB(255, 72, 134, 241),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            child: Text(
+                              "${getTime(match.utcDate.toString())}",
+                              style: const TextStyle(
+                                  fontSize: 10, color: Colors.white),
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -80,7 +116,8 @@ class _MatchesScreenState extends State<MatchesScreen> {
               },
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 5/3,
+                childAspectRatio: 1/0.8,
+                mainAxisSpacing: 0.3,
               ),
             ),
           ),
@@ -90,13 +127,37 @@ class _MatchesScreenState extends State<MatchesScreen> {
   }
 
   _error() {
-    return Center(
-      child: ElevatedButton(
-        child: const Text('Tentar novamente'),
-        onPressed: () {
-          controller.start();
-        },
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text(
+          'Não foi possível carregar os jogos',
+          style: TextStyle(
+            color: Colors.black87,
+          ),
+        ),
+        const Divider(
+          color: Colors.transparent,
+          height: 5,
+        ),
+        const Text(
+          'Verifique sua conexão com a internet',
+          style: TextStyle(
+            color: Colors.black54,
+            fontSize: 12,
+          ),
+        ),
+        const Divider(
+          color: Colors.transparent,
+        ),
+        ElevatedButton(
+          child: const Text('Tente novamente'),
+          onPressed: () {
+            controller.start();
+          },
+        ),
+      ],
     );
   }
 
@@ -139,4 +200,29 @@ class _MatchesScreenState extends State<MatchesScreen> {
       },
     );
   }
+}
+
+String getDate(String date) {
+  var dateDateTime =
+      DateTime.parse("${date.substring(0, 10)} ${date.substring(11, 20)}");
+  dateDateTime = dateDateTime.toLocal();
+  if (dateDateTime.day < 10) {
+    return "0${dateDateTime.day}/${dateDateTime.month}";
+  } else if (dateDateTime.month < 10) {
+    return "${dateDateTime.day}/${dateDateTime.month}";
+  } else if (dateDateTime.minute == 0) {
+    return "${dateDateTime.day}/${dateDateTime.month}";
+  } else {
+    return "${dateDateTime.day}/${dateDateTime.month}";
+  }
+}
+
+String getTime(String date) {
+  var dateDateTime =
+      DateTime.parse("${date.substring(0, 10)} ${date.substring(11, 20)}");
+  dateDateTime = dateDateTime.toLocal();
+  if (dateDateTime.minute == 0) {
+    return "${dateDateTime.hour}:${dateDateTime.minute}0";
+  }
+  return "${dateDateTime.hour}:${dateDateTime.minute}";
 }

@@ -103,13 +103,37 @@ class _ScorersScreenState extends State<ScorersScreen> {
   }
 
   _error() {
-    return Center(
-      child: ElevatedButton(
-        child: const Text('Tentar novamente'),
-        onPressed: () {
-          controller.start();
-        },
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text(
+          'Não foi possível carregar a artilharia',
+          style: TextStyle(
+            color: Colors.black87,
+          ),
+        ),
+        const Divider(
+          color: Colors.transparent,
+          height: 5,
+        ),
+        const Text(
+          'Verifique sua conexão com a internet',
+          style: TextStyle(
+            color: Colors.black54,
+            fontSize: 12,
+          ),
+        ),
+        const Divider(
+          color: Colors.transparent,
+        ),
+        ElevatedButton(
+          child: const Text('Tente novamente'),
+          onPressed: () {
+            controller.start();
+          },
+        ),
+      ],
     );
   }
 

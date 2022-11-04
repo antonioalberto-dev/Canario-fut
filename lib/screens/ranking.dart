@@ -26,7 +26,7 @@ class _RankingState extends State<Ranking> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               const SizedBox(
-                height: 60,
+                height: 65,
                 child: Image(
                   image: NetworkImage(
                     "https://upload.wikimedia.org/wikipedia/pt/4/42/Campeonato_Brasileiro_S%C3%A9rie_A_logo.png",
@@ -71,13 +71,37 @@ class _RankingState extends State<Ranking> {
   }
 
   _error() {
-    return Center(
-      child: ElevatedButton(
-        child: const Text('Tentar novamente'),
-        onPressed: () {
-          controller.start();
-        },
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const Text(
+          'Não foi possível carregar classificação',
+          style: TextStyle(
+            color: Colors.black87,
+          ),
+        ),
+        const Divider(
+          color: Colors.transparent,
+          height: 5,
+        ),
+        const Text(
+          'Verifique sua conexão com a internet',
+          style: TextStyle(
+            color: Colors.black54,
+            fontSize: 12,
+          ),
+        ),
+        const Divider(
+          color: Colors.transparent,
+        ),
+        ElevatedButton(
+          child: const Text('Tente novamente'),
+          onPressed: () {
+            controller.start();
+          },
+        ),
+      ],
     );
   }
 
