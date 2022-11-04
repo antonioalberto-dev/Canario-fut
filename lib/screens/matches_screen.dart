@@ -67,16 +67,27 @@ class _MatchesScreenState extends State<MatchesScreen> {
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(match.homeTeam!.tla.toString()),
-                              Text(match.score!.fullTime!.home.toString())
+                              Text(
+                                match.homeTeam!.tla.toString(),
+                                style: const TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                  match.score!.fullTime!.home.toString() == null
+                                      ? match.score!.fullTime!.home.toString()
+                                      : "0")
                             ],
                           ),
-                          const Divider(),
+                          const Text("X"),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(match.awayTeam!.tla.toString()),
-                              Text(match.score!.fullTime!.away.toString())
+                              Text(match.awayTeam!.tla.toString(),
+                                  style:
+                                      const TextStyle(fontWeight: FontWeight.bold)),
+                              Text(
+                                  match.score!.fullTime!.away.toString() == null
+                                      ? match.awayTeam!.tla.toString()
+                                      : "0")
                             ],
                           ),
                         ],
@@ -85,7 +96,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Container(
-                            padding: const EdgeInsets.fromLTRB(3.5, 1, 3.5, 1),
+                            padding: const EdgeInsets.fromLTRB(5, 1, 5, 1),
                             decoration: const BoxDecoration(
                                 color: Colors.teal,
                                 borderRadius:
@@ -93,7 +104,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
                             child: Text(
                               getDate(match.utcDate.toString()),
                               style: const TextStyle(
-                                  fontSize: 10, color: Colors.white),
+                                  fontSize: 12, color: Colors.white),
                             ),
                           ),
                           Container(
@@ -105,7 +116,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
                             child: Text(
                               "${getTime(match.utcDate.toString())}",
                               style: const TextStyle(
-                                  fontSize: 10, color: Colors.white),
+                                  fontSize: 12, color: Colors.white),
                             ),
                           ),
                         ],
@@ -116,7 +127,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
               },
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 1/0.8,
+                childAspectRatio: 1 / 0.8,
                 mainAxisSpacing: 0.3,
               ),
             ),

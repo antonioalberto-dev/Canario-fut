@@ -20,7 +20,8 @@ class _MyAppState extends State<MyApp> {
       title: 'Canario Fut',
       theme: ThemeData(
         primarySwatch: Colors.teal,
-        fontFamily: 'Poppins',
+        useMaterial3: true,
+        // fontFamily: 'Poppins',
       ),
       home: const MainScreen(),
     );

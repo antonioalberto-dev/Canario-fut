@@ -1,3 +1,5 @@
+// ignore_for_file: sort_child_properties_last
+
 import 'package:canario_fut/controllers/home_controller.dart';
 import 'package:canario_fut/controllers/state_enum.dart';
 import 'package:canario_fut/models/ratingTable.dart';
@@ -35,20 +37,32 @@ class _RankingState extends State<Ranking> {
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    'Classificação',
-                    style: TextStyle(
-                      fontSize: 16,
-                      // letterSpacing: 1.0,
-                      fontWeight: FontWeight.bold,
-                    ),
+                children: [
+                  Row(
+                    children: [
+                      const Text(
+                        'Classificação',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          showSimpleDialog(context);
+                        },
+                        icon: const Icon(
+                          Icons.info_outline,
+                          size: 20,
+                        ),
+                      )
+                    ],
                   ),
-                  Text(
+                  const Text(
                     'Campeonato Brasileiro 2022 | Série A',
                     style: TextStyle(
-                      fontSize: 10,
-                      color: Colors.black87,
+                      fontSize: 11,
+                      color: Colors.lightBlue,
                     ),
                   ),
                 ],
@@ -145,3 +159,63 @@ class _RankingState extends State<Ranking> {
     );
   }
 }
+
+void showSimpleDialog(BuildContext context) => showDialog(
+    context: context,
+    builder: (context) {
+      return SimpleDialog(
+        title: const Text("Informações"),
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    SizedBox(width: 10),
+                    Icon(
+                      Icons.circle_rounded,
+                      size: 20,
+                      color: Colors.teal,
+                    ),
+                    SizedBox(width: 10),
+                    Text("Libertadores"),
+                  ],
+                ),
+                const Divider(color: Colors.transparent),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    SizedBox(width: 10),
+                    Icon(
+                      Icons.circle_rounded,
+                      size: 20,
+                      color: Color.fromARGB(255, 72, 134, 241),
+                    ),
+                    SizedBox(width: 10),
+                    Text("Pré-libertadores"),
+                  ],
+                ),
+                const Divider(color: Colors.transparent),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const [
+                    SizedBox(width: 10),
+                    Icon(
+                      Icons.circle_rounded,
+                      size: 20,
+                      color: Color.fromARGB(255, 250, 163, 157),
+                    ),
+                    SizedBox(width: 10),
+                    Text("Rebaixamento"),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+        // contentPadding: const EdgeInsets.all(10.0),
+      );
+    });

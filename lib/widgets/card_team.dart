@@ -18,7 +18,7 @@ class CardTeam extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.white, colorCard(index)],
+            colors: [Colors.transparent, colorCard(index)],
           ),
         ),
         child: ListTile(
@@ -31,13 +31,13 @@ class CardTeam extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
-              Text(
+              const Text(
                 "LUGAR",
                 style: TextStyle(
                   fontSize: 9,
                   fontWeight: FontWeight.bold,
                   letterSpacing: .6,
-                  color: colorCardGradientText(index),
+                  color: Colors.white,
                 ),
               ),
             ],
@@ -133,7 +133,7 @@ Color colorCard(int position) {
   } else if (position <= 5) {
     return const Color.fromARGB(255, 72, 134, 241);
   }
-  return Colors.white;
+  return Colors.transparent;
 }
 
 Color colorCardText(int position) {
@@ -143,17 +143,6 @@ Color colorCardText(int position) {
     return Colors.white;
   } else if (position <= 5) {
     return Colors.white;
-  }
-  return Colors.black;
-}
-
-Color colorCardGradientText(int position) {
-  if (position <= 3) {
-    return const Color.fromARGB(255, 10, 164, 149);
-  } else if (position >= 16) {
-    return const Color.fromARGB(255, 250, 163, 157);
-  } else if (position <= 5) {
-    return const Color.fromARGB(255, 72, 134, 241);
   }
   return Colors.black;
 }
