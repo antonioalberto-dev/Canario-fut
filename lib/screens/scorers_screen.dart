@@ -13,7 +13,6 @@ class ScorersScreen extends StatefulWidget {
 
 class _ScorersScreenState extends State<ScorersScreen> {
   final controller = ScorersController();
-
   _success() {
     return Padding(
       padding: const EdgeInsets.fromLTRB(10, 15, 10, 20),
@@ -21,12 +20,18 @@ class _ScorersScreenState extends State<ScorersScreen> {
         children: [
           Row(
             children: [
+              SizedBox(
+                width: 50,
+                child: Image(
+                  image: NetworkImage(controller.info['emblem']),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10, left: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'ARTILHEIROS',
                       style: TextStyle(
                         fontSize: 16,
@@ -35,8 +40,8 @@ class _ScorersScreenState extends State<ScorersScreen> {
                       ),
                     ),
                     Text(
-                      'Campeonato Brasileiro 2022 | Série A',
-                      style: TextStyle(
+                      '${controller.info['name']}',
+                      style: const TextStyle(
                         fontSize: 10,
                         // fontStyle: FontStyle.italic,
                         color: Colors.black87,

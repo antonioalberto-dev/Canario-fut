@@ -18,7 +18,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
 
   _success() {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 15, 10, 0),
+      padding: const EdgeInsets.fromLTRB(10, 15, 10, 20),
       child: Column(
         children: [
           Row(
@@ -69,7 +69,8 @@ class _MatchesScreenState extends State<MatchesScreen> {
                             children: [
                               Text(
                                 match.homeTeam!.tla.toString(),
-                                style: const TextStyle(fontWeight: FontWeight.bold),
+                                style: const TextStyle(
+                                    fontWeight: FontWeight.bold),
                               ),
                               Text(
                                   match.score!.fullTime!.home.toString() == null
@@ -82,8 +83,8 @@ class _MatchesScreenState extends State<MatchesScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(match.awayTeam!.tla.toString(),
-                                  style:
-                                      const TextStyle(fontWeight: FontWeight.bold)),
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold)),
                               Text(
                                   match.score!.fullTime!.away.toString() == null
                                       ? match.awayTeam!.tla.toString()

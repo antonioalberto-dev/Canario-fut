@@ -31,6 +31,7 @@ class MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(elevation: 0, toolbarHeight: 0),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),

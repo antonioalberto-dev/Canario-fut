@@ -7,6 +7,7 @@ import 'state_enum.dart';
 
 class ScorersController {
   List<Scorer> scorers = [];
+  Map info = {};
   final ScorersRepository? _repository;
 
   var state = ValueNotifier<StateEnum>(StateEnum.start);
@@ -17,6 +18,7 @@ class ScorersController {
   Future start() async {
     state.value = StateEnum.loading;
     try {
+      info = await _repository?.fetchData() as Map<String, dynamic>;
       scorers = await _repository?.fetchScorers() as List<Scorer>;
       state.value = StateEnum.success;
     } catch (e) {
