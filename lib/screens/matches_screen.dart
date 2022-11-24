@@ -174,9 +174,7 @@ class _MatchesScreenState extends State<MatchesScreen> {
   }
 
   _loading() {
-    return const Center(
-      child: CircularProgressIndicator(),
-    );
+    return CircularProgressIndicator();
   }
 
   _start() {

@@ -1,6 +1,7 @@
 import 'package:canario_fut/controllers/scorers_controller.dart';
 import 'package:canario_fut/models/scorer.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 import '../controllers/state_enum.dart';
 
@@ -22,9 +23,8 @@ class _ScorersScreenState extends State<ScorersScreen> {
             children: [
               SizedBox(
                 width: 50,
-                child: Image(
-                  image: NetworkImage(controller.info['emblem']),
-                ),
+                child: Lottie.network(
+                    'https://assets10.lottiefiles.com/packages/lf20_dSdZzy.json'),
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10, left: 15),
@@ -143,8 +143,9 @@ class _ScorersScreenState extends State<ScorersScreen> {
   }
 
   _loading() {
-    return const Center(
-      child: CircularProgressIndicator(),
+    return Center(
+      child: Lottie.network(
+          'https://assets7.lottiefiles.com/packages/lf20_4kildwqt.json'),
     );
   }
 

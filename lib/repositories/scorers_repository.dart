@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 
 class ScorersRepository {
   Dio? dio;
-  final url = "http://api.football-data.org//v4/competitions/WC/scorers";
+  final url = "http://api.football-data.org//v4/competitions/BSA/scorers";
 
   ScorersRepository({Dio? client}) : dio = client ?? Dio();
 
